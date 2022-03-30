@@ -115,7 +115,7 @@ def get_hand_value(cards):
             value += 11
             value_soft += 1
 
-    if value >= 21:
+    if value > 21:
         return value_soft
     else:
         return value
