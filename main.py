@@ -75,6 +75,9 @@ def print_table(_player_cards, _dealer_cards, _player_end):
     for i in range(1):
         print(" ")
 
+    # Deck size
+    print("Cards left in the deck: " + str(len(current_card_pack)))
+        
     # For fun
     if show_chances:
         global current_card_pack
