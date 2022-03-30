@@ -4,7 +4,7 @@ import os
 current_card_pack = []
 all_cards = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "K", "Q", "A"]
 card_symbols = ["♣", "♦", "♥", "♠"]
-
+show_chances = False
 
 def new_pack():
     card_pack = []
@@ -42,7 +42,9 @@ def get_card_value(card):
 
 
 def print_table(_player_cards, _dealer_cards, _player_end):
+    # Clear console
     os.system('cls')
+
     # Dealer cards
     n = 0
     dealer_cards_string = "The dealer cards are:\n"
@@ -73,6 +75,33 @@ def print_table(_player_cards, _dealer_cards, _player_end):
     for i in range(1):
         print(" ")
 
+    # For fun
+    if show_chances:
+        global current_card_pack
+        current_deck_size = len(current_card_pack)
+        card_chances = [0, 0, 0, 0, 0]
+
+        for card in current_card_pack:
+            card = card[:-1]
+            if card == "A":
+                card_chances[0] += 1
+            elif card == "K":
+                card_chances[1] += 1
+            elif card == "Q":
+                card_chances[2] += 1
+            elif card == "J":
+                card_chances[3] += 1
+            elif card == "10":
+                card_chances[4] += 1
+
+        chance_A = round(card_chances[0] / current_deck_size * 100, 2)
+        chance_K = round(card_chances[1] / current_deck_size * 100, 2)
+        chance_Q = round(card_chances[2] / current_deck_size * 100, 2)
+        chance_J = round(card_chances[3] / current_deck_size * 100, 2)
+        chance_10 = round(card_chances[4] / current_deck_size * 100, 2)
+
+        print("Card chances: A - {0}; K - {1}; Q - {2}; J - {3}; 10 - {4}".format(chance_A, chance_K, chance_Q, chance_J, chance_10))
+
 
 def get_hand_value(cards):
     value = 0
@@ -92,10 +121,11 @@ def get_hand_value(cards):
         return value
 
 
+# Card chances
+show_chances = "y" == input("Would you to see card chances? (y/n)\n")
+
+# Main loop
 while True:
-    # NB: new round starts when this loop resets.
-    
-    # Init
     dealer_cards = []
     player_cards = []
     player_end = False
