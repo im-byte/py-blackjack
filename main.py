@@ -76,11 +76,11 @@ def print_table(_player_cards, _dealer_cards, _player_end):
         print(" ")
 
     # Deck size
+    global current_card_pack
     print("Cards left in the deck: " + str(len(current_card_pack)))
         
     # For fun
     if show_chances:
-        global current_card_pack
         current_deck_size = len(current_card_pack)
         card_chances = [0, 0, 0, 0, 0]
 
