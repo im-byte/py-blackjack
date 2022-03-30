@@ -93,6 +93,9 @@ def get_hand_value(cards):
 
 
 while True:
+    # NB: new round starts when this loop resets.
+    
+    # Init
     dealer_cards = []
     player_cards = []
     player_end = False
