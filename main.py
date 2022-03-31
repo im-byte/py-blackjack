@@ -102,7 +102,7 @@ def print_table(_player_cards, _dealer_cards, _player_end):
         chance_Q = round(card_chances[2] / current_deck_size * 100, 2)
         chance_J = round(card_chances[3] / current_deck_size * 100, 2)
         chance_10 = round(card_chances[4] / current_deck_size * 100, 2)
-        chance_all = chance_A + chance_K + chance_Q + chance_J + chance_10
+        chance_all = round(chance_A + chance_K + chance_Q + chance_J + chance_10, 2)
         
         print("Card chances: A - {0}%; K - {1}%; Q - {2}%; J - {3}%; 10 - {4}% ({5}%)".format(chance_A, chance_K, chance_Q, chance_J, chance_10, chance_all))
 
