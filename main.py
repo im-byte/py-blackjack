@@ -146,7 +146,7 @@ while True:
     player_value = get_hand_value(player_cards)
     
     if player_value == 21:
-        print("BLACKJACK! You won!)
+        print("BLACKJACK! You won!")
         next_action = "new"
     else:
         next_action = input("HIT or STAND?\n")
