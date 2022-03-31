@@ -129,8 +129,7 @@ def get_hand_value(cards):
 show_chances = "y" == input("Would you to see card chances? (y/n)\n")
 
 # Main loop
-running = True
-while running:
+while True:
     dealer_cards = []
     player_cards = []
     player_end = False
@@ -162,19 +161,21 @@ while running:
         if get_hand_value(player_cards) > 21:
             print("Busted. Dealer won.")
             new_round = input("Would you like to play another round? (y/n)\n")
-            if new_round == "n":
-                running = False
-            next_action = "new"
-            break
+            if new_round == "y":
+                next_action = "new"
+                break
+            else:
+                quit()
         elif get_hand_value(player_cards) == 21:  # Blackjack
             player_end = True
             print_table(player_cards, dealer_cards, player_end)
             print("BLACKJACK! You won.")
             new_round = input("Would you like to play another round? (y/n)\n")
-            if new_round == "n":
-                running = False
-            next_action = "new"
-            break
+            if new_round == "y":
+                next_action = "new"
+                break
+            else:
+                quit()
 
         # Next
         next_action = input("HIT or STAND?\n")
@@ -210,4 +211,4 @@ while running:
 
     new_round = input("Would you like to play another round? (y/n)\n")
     if new_round.lower == "n":
-        running = False
+        quit()
