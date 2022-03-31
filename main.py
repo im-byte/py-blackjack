@@ -139,9 +139,17 @@ while True:
     player_cards.append(take_random_card())
     dealer_cards.append(take_random_card())
     player_cards.append(take_random_card())
-
+    
     print_table(player_cards, dealer_cards, player_end)
-    next_action = input("HIT or STAND?\n")
+    
+    # Check for player blackjack
+    player_value = get_hand_value(player_cards)
+    
+    if player_value == 21:
+        print("BLACKJACK! You won!)
+        next_action = "new"
+    else:
+        next_action = input("HIT or STAND?\n")
 
     # Player Hits
     while next_action == "hit":
@@ -154,7 +162,7 @@ while True:
             print("Busted. Dealer won.")
             new_round = input("Would you like to play another round? (y/n)\n")
             if new_round == "y":
-                next_action = "NEW"
+                next_action = "new"
                 break
             else:
                 exit()
@@ -164,7 +172,7 @@ while True:
             print("BLACKJACK! You won.")
             new_round = input("Would you like to play another round? (y/n)\n")
             if new_round == "y":
-                next_action = "NEW"
+                next_action = "new"
                 break
             else:
                 exit()
@@ -173,7 +181,7 @@ while True:
         next_action = input("HIT or STAND?\n")
 
     # New game.
-    if next_action == "NEW":
+    if next_action == "new":
         continue
 
     player_end = True
